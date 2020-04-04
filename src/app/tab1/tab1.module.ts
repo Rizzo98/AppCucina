@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
+import {DatabaseService} from '../database.service'
 
 @NgModule({
   imports: [
@@ -14,4 +15,10 @@ import { Tab1Page } from './tab1.page';
   ],
   declarations: [Tab1Page]
 })
-export class Tab1PageModule {}
+export class Tab1PageModule {
+  constructor(private db:DatabaseService){
+    db.getRecipes((c)=>{
+      console.log(c)
+    },['Facile','Media','Difficile'],700,['Basso','Elevato'],300,['Farina 00'])
+  }
+}
