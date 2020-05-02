@@ -16,9 +16,8 @@ import {DatabaseService} from '../database.service'
   declarations: [Tab1Page]
 })
 export class Tab1PageModule {
-  constructor(private db:DatabaseService){
-    db.getRecipes((c)=>{
-      console.log(c)
-    },['Facile','Media','Difficile'],700,['Basso','Elevato'],300,['Farina 00'])
+  constructor(){
+    
   }
+
 }

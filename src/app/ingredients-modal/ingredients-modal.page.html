@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search ingredients</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="goBack()">Back</ion-button>
+
+  <ion-searchbar showcancelbutton="" (ionChange)="filterList($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let i of filtered">
+      <ion-checkbox color="warning" (ionChange)="addIngredient($event,i.name)" [checked]="elementInList(i.name)"></ion-checkbox>
+      <ion-label>{{i.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

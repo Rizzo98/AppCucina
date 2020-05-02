@@ -14,10 +14,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { firebaseConfig } from './credentials';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {IngredientsModalPageModule} from './ingredients-modal/ingredients-modal.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,9 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AngularFirestoreModule,
     BrowserModule,
-    BrowserAnimationsModule],
+    BrowserAnimationsModule,
+    IngredientsModalPageModule],
   providers: [
     StatusBar,
     SplashScreen,

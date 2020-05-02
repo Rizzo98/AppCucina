@@ -2,3 +2,26 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+div{
+  border-style: groove;
+  border-bottom: 1px;
+}
+
+ion-toolbar{
+  --background:#ffca22;
+  --min-height:70px;
+  --border-color: white;
+}
+
+ion-title{
+  color: white;
+  font-size: 30px;
+  font-family: Helvetica;
+  align-content: center;
+}
+
+ion-toggle {
+  --handle-spacing: 0px;
+  --handle-height: 0%;
+}
