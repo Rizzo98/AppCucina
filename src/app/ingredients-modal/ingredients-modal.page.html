@@ -1,13 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Search ingredients</ion-title>
+    <ion-item>
+      <ion-button (click)="goBack()" color="warning">Back</ion-button>
+      <ion-title>Search ingredients</ion-title>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="goBack()">Back</ion-button>
-
   <ion-searchbar showcancelbutton="" (ionChange)="filterList($event)"></ion-searchbar>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="warning" (click)="confirm()">
+      <ion-icon name="checkmark"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-list>
     <ion-item *ngFor="let i of filtered">
       <ion-checkbox color="warning" (ionChange)="addIngredient($event,i.name)" [checked]="elementInList(i.name)"></ion-checkbox>
