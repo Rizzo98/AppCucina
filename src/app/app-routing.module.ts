@@ -9,6 +9,14 @@ const routes: Routes = [
   {
     path: 'ingredients-modal',
     loadChildren: () => import('./ingredients-modal/ingredients-modal.module').then( m => m.IngredientsModalPageModule)
+  },
+  {
+    path: 'recipes-list',
+    loadChildren: () => import('./recipes-list/recipes-list.module').then( m => m.RecipesListPageModule)
+  },
+  {
+    path: 'recipe-detail',
+    loadChildren: () => import('./recipe-detail/recipe-detail.module').then( m => m.RecipeDetailPageModule)
   }
 ];
 @NgModule({

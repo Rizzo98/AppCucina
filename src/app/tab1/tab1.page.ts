@@ -138,18 +138,18 @@ export class Tab1Page {
 
     let ing = []
     if(this.ingredients==true){
-      ing=this.ingredientList
+      ing=this.selectedIngredients
       if(ing.length==0)
         ing=undefined
     }else{
       ing=undefined
     }
-    
+
     if(diff==undefined && cal==undefined && costo==undefined && time ==undefined && ing==undefined){
       console.log("too much zio")
     }else{
       this.db.getRecipes((c)=>{
-        console.log(c)
+        this.navCtrl.navigateForward('/recipes-list',{ queryParams: { recipes :  JSON.stringify(c) } })
       },diff,cal,costo,time,ing)
     }
 

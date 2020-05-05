@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <div>
+      <ion-title>{{recipe.titolo}}</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-label>Generale</ion-label>
+    <br>
+    <ion-item>
+      <label>Calorie : </label>
+      <p> {{recipe.calorie}}</p>
+    </ion-item>
+    <ion-item>
+      <label>Costo : </label>
+      <p> {{recipe.costo}}</p>
+    </ion-item>
+    <ion-item>
+      <label>Difficoltà : </label>
+      <p> {{recipe['difficoltà']}}</p>
+    </ion-item>
+    <ion-item>
+      <label>Cottura : </label>
+      <p> {{recipe.cottura}}</p>
+    </ion-item>
+    <ion-item>
+      <label>Preparazione : </label>
+      <p> {{recipe.preparazione}}</p>
+    </ion-item>
+    <ion-item>
+      <label>Tempo totale : </label>
+      <p> {{recipe.totalTime}}</p>
+    </ion-item>
+  </div>
+  <br>
+  <div>
+    <ion-label>Ingredienti</ion-label>
+    <br>
+    <ion-item *ngFor="let i of ingredients">
+      <ion-label>{{i[0]}}</ion-label>
+      <ion-label>{{i[1]}}</ion-label>
+
+    </ion-item>
+  </div>
+
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="warning" (click)="goBack()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
