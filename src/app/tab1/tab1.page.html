@@ -7,94 +7,99 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <ion-checkbox (ionChange)="checkDifficulty($event)" color="warning"></ion-checkbox>
+  <ion-item>
+    <ion-checkbox (ionChange)="checkDifficulty($event)" color="warning" mode="ios" class="ion-text-wrap"></ion-checkbox>
     <ion-label>Difficulty</ion-label>
+  </ion-item>
+  <div [@enterAnimation] *ngIf='difficulty==true' class='indentDiv'>
+    <ion-item>
+      <ion-label>Molto facile</ion-label>
+      <ion-toggle color="warning" (ionChange)="setDifficulty($event,0)" [checked]="difficultyCheck[0]==true"></ion-toggle>
+    </ion-item>
     <br>
-    <div *ngIf='difficulty==true'>
-      <ion-item>
-        <ion-label>Molto facile</ion-label>
-        <ion-toggle color="warning" (ionChange)="setDifficulty($event,0)" [checked]="difficultyCheck[0]==true"></ion-toggle>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label>Facile</ion-label>
-        <ion-toggle color="warning" (ionChange)="setDifficulty($event,1)" [checked]="difficultyCheck[1]==true"></ion-toggle>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label>Media</ion-label>
-        <ion-toggle color="warning" (ionChange)="setDifficulty($event,2)" [checked]="difficultyCheck[2]==true"></ion-toggle>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label>Difficile</ion-label>
-        <ion-toggle color="warning" (ionChange)="setDifficulty($event,3)" [checked]="difficultyCheck[3]==true"></ion-toggle>
-      </ion-item>
-    </div>
+    <ion-item>
+      <ion-label>Facile</ion-label>
+      <ion-toggle color="warning" (ionChange)="setDifficulty($event,1)" [checked]="difficultyCheck[1]==true"></ion-toggle>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label>Media</ion-label>
+      <ion-toggle color="warning" (ionChange)="setDifficulty($event,2)" [checked]="difficultyCheck[2]==true"></ion-toggle>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label>Difficile</ion-label>
+      <ion-toggle color="warning" (ionChange)="setDifficulty($event,3)" [checked]="difficultyCheck[3]==true"></ion-toggle>
+    </ion-item>
   </div>
 
-  <div>
-    <ion-checkbox (ionChange)="checkMaxCalories($event)" color="warning"></ion-checkbox>
+  <ion-item [@enterAnimation] *ngIf='difficulty==true'><br></ion-item>
+  <ion-item>
+    <ion-checkbox (ionChange)="checkMaxCalories($event)" color="warning" mode="ios"></ion-checkbox>
     <ion-label>Max calories</ion-label>
-    <div *ngIf='maxCalories==true'>
-      <ion-range min="20" max="80" step="2" pin = true color="warning" (ionChange)="setMaxCalories($event)" [value]="maxCaloriesCheck">
-        <ion-icon size="small" slot="start" name="sunny"></ion-icon>
-        <ion-icon slot="end" name="sunny"></ion-icon>
-      </ion-range>
-    </div>
-    
+  </ion-item>
+  <div [@enterAnimation] *ngIf='maxCalories==true' class='indentDiv'>
+    <ion-range min="20" max="80" step="2" pin = true color="warning" (ionChange)="setMaxCalories($event)" [value]="maxCaloriesCheck">
+      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+      <ion-icon slot="end" name="sunny"></ion-icon>
+    </ion-range>
   </div>
   
-  <div>
-    <ion-checkbox (ionChange)="checkCost($event)" color="warning"></ion-checkbox>
+  <ion-item [@enterAnimation] *ngIf='maxCalories==true'><br></ion-item>
+  <ion-item>
+    <ion-checkbox (ionChange)="checkCost($event)" color="warning" mode="ios"></ion-checkbox>
     <ion-label>Cost</ion-label>
+  </ion-item>
+  <div [@enterAnimation] *ngIf='cost==true' class='indentDiv'>
+    <ion-item>
+      <ion-label>Molto basso</ion-label>
+      <ion-toggle color="warning" (ionChange)="setCost($event,0)" [checked]="costCheck[0]==true"></ion-toggle>
+    </ion-item>
     <br>
-    <div *ngIf='cost==true'>
-      <ion-item>
-        <ion-label>Molto basso</ion-label>
-        <ion-toggle color="warning" (ionChange)="setCost($event,0)" [checked]="costCheck[0]==true"></ion-toggle>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label>Basso</ion-label>
-        <ion-toggle color="warning" (ionChange)="setCost($event,1)" [checked]="costCheck[1]==true"></ion-toggle>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label>Medio</ion-label>
-        <ion-toggle color="warning" (ionChange)="setCost($event,2)" [checked]="costCheck[2]==true"></ion-toggle>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label>Elevato</ion-label>
-        <ion-toggle color="warning" (ionChange)="setCost($event,3)" [checked]="costCheck[3]==true"></ion-toggle>
-      </ion-item>
-    </div>    
-  </div>
+    <ion-item>
+      <ion-label>Basso</ion-label>
+      <ion-toggle color="warning" (ionChange)="setCost($event,1)" [checked]="costCheck[1]==true"></ion-toggle>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label>Medio</ion-label>
+      <ion-toggle color="warning" (ionChange)="setCost($event,2)" [checked]="costCheck[2]==true"></ion-toggle>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label>Elevato</ion-label>
+      <ion-toggle color="warning" (ionChange)="setCost($event,3)" [checked]="costCheck[3]==true"></ion-toggle>
+    </ion-item>
+  </div>    
 
-  <div>
-    <ion-checkbox (ionChange)="checkMaxTime($event)" color="warning"></ion-checkbox>
+  <ion-item [@enterAnimation] *ngIf='cost==true'><br></ion-item>
+  <ion-item>
+    <ion-checkbox (ionChange)="checkMaxTime($event)" color="warning" mode="ios"></ion-checkbox>
     <ion-label>Max times</ion-label>
-    <div *ngIf='maxTime==true'>
-      <ion-range min="20" max="80" step="2" pin = true color="warning" (ionChange)="setMaxTime($event)" [value]="maxTimeCheck">
-        <ion-icon size="small" slot="start" name="sunny"></ion-icon>
-        <ion-icon slot="end" name="sunny"></ion-icon>
-      </ion-range>
-    </div>
+  </ion-item>
+  <div [@enterAnimation] *ngIf='maxTime==true' class='indentDiv'>
+    <ion-range min="20" max="80" step="2" pin = true color="warning" (ionChange)="setMaxTime($event)" [value]="maxTimeCheck">
+      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+      <ion-icon slot="end" name="sunny"></ion-icon>
+    </ion-range>
   </div>
   
-  <div>
-    <ion-checkbox (ionChange)="checkIngredients($event)" color="warning"></ion-checkbox>
+  <ion-item [@enterAnimation] *ngIf='maxTime==true'><br></ion-item>
+  <ion-item>
+    <ion-checkbox (ionChange)="checkIngredients($event)" color="warning" mode="ios"></ion-checkbox>
     <ion-label>Ingredients</ion-label>
-    <div *ngIf='ingredients==true'>
-      <ion-fab-button color="warning"><ion-icon name='add' (click)="presentModal()"></ion-icon></ion-fab-button>
-      <ion-list>
-        <ion-item *ngFor="let i of selectedIngredients">
-          <ion-label>{{i}}</ion-label>
-        </ion-item>
-      </ion-list>
-    </div>
+  </ion-item>
+  <div [@enterAnimation] *ngIf='ingredients==true' class='indentDiv'>
+    <ion-list>
+      <ion-item *ngFor="let i of selectedIngredients">
+        <ion-label>{{i}}</ion-label>
+        <ion-button color="warning" (click)="removeIngredient(i)"><ion-icon name='close'></ion-icon></ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-button color="warning" (click)="presentModal()" ><ion-icon name='add'></ion-icon></ion-button>
+        <ion-label>Aggiungi un nuovo ingrediente</ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

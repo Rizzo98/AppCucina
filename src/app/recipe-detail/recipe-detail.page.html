@@ -1,14 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <div>
-      <ion-title>{{recipe.titolo}}</ion-title>
+      <ion-title class="ion-text-wrap">{{recipe.titolo}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <br>
   <div>
-    <ion-label>Generale</ion-label>
+    <ion-label class='title'>Generale</ion-label>
     <br>
     <ion-item>
       <label>Calorie : </label>
@@ -36,12 +37,13 @@
     </ion-item>
   </div>
   <br>
+  <br>
   <div>
-    <ion-label>Ingredienti</ion-label>
+    <ion-label class='title'>Ingredienti</ion-label>
     <br>
-    <ion-item *ngFor="let i of ingredients">
-      <ion-label>{{i[0]}}</ion-label>
-      <ion-label>{{i[1]}}</ion-label>
+    <ion-item *ngFor="let i of ingredients" class="ion-text-wrap">
+      <ion-label class="ion-text-wrap">{{i[0]}}</ion-label>
+      <ion-label class="ion-text-wrap">{{i[1]}}</ion-label>
 
     </ion-item>
   </div>

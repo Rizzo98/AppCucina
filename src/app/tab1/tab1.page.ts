@@ -2,10 +2,20 @@ import { Component } from '@angular/core';
 import {DatabaseService} from '../database.service'
 import { NavController,ModalController } from '@ionic/angular';
 import { IngredientsModalPage } from '../ingredients-modal/ingredients-modal.page';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-tab1',
+  animations:[
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({transform: 'translateX(-70%)', opacity: 0}),
+          animate('250ms', style({transform: 'translateX(0)', opacity: 1}))
+        ])
+      ]
+    )
+  ],
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
@@ -73,6 +83,10 @@ export class Tab1Page {
       this.selectedIngredients=d.data.data      
     });
     return await modal.present();
+  }
+
+  removeIngredient(i){
+    this.selectedIngredients = this.selectedIngredients.filter((v)=>{return v!=i})
   }
 
   setDifficulty(e,d){

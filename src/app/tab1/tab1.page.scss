@@ -3,11 +3,6 @@
   overflow: hidden;
 }
 
-div{
-  border-style: groove;
-  border-bottom: 1px;
-}
-
 ion-toolbar{
   --background:#ffca22;
   --min-height:70px;
@@ -24,4 +19,8 @@ ion-title{
 ion-toggle {
   --handle-spacing: 0px;
   --handle-height: 0%;
+}
+
+.indentDiv{
+  margin-left: 30px;
 }
