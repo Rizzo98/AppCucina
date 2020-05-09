@@ -14,3 +14,22 @@ ion-title{
 .title{
     font-weight:bold
 }
+
+.indentDiv{
+    margin-left: 30px;
+}
+
+ion-slides{
+    --bullet-background: #ffca22;
+    --bullet-background-active: #ffca22;
+    --progress-bar-background: #ffca22;
+    --progress-bar-background-active: #ffca22;
+    --scroll-bar-background: #ffca22;
+    --scroll-bar-background-active: #ffca22;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+    height: auto;
+}

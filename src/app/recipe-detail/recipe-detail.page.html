@@ -8,9 +8,12 @@
 
 <ion-content>
   <br>
-  <div>
+  <ion-item>
     <ion-label class='title'>Generale</ion-label>
-    <br>
+    <ion-icon *ngIf="general==true" name="arrow-dropup" (click)="showGeneral()"></ion-icon>
+    <ion-icon *ngIf="general==false" name="arrow-dropdown" (click)="showGeneral()"></ion-icon>
+  </ion-item>
+  <div *ngIf="general==true" class='indentDiv' [@enterAnimation]>
     <ion-item>
       <label>Calorie : </label>
       <p> {{recipe.calorie}}</p>
@@ -36,11 +39,17 @@
       <p> {{recipe.totalTime}}</p>
     </ion-item>
   </div>
+
   <br>
   <br>
-  <div>
+
+  <ion-item>
     <ion-label class='title'>Ingredienti</ion-label>
-    <br>
+    <ion-icon *ngIf="ingr==true" name="arrow-dropup" (click)="showIngredients()"></ion-icon>
+    <ion-icon *ngIf="ingr==false" name="arrow-dropdown" (click)="showIngredients()"></ion-icon>
+  </ion-item>
+
+  <div *ngIf="ingr==true" class='indentDiv' [@enterAnimation]>
     <ion-item *ngFor="let i of ingredients" class="ion-text-wrap">
       <ion-label class="ion-text-wrap">{{i[0]}}</ion-label>
       <ion-label class="ion-text-wrap">{{i[1]}}</ion-label>
@@ -48,6 +57,34 @@
     </ion-item>
   </div>
 
+  <br>
+  <br>
+
+  <ion-item>
+    <ion-label class='title'>Preparazione</ion-label>
+    <ion-icon *ngIf="prep==true" name="arrow-dropup" (click)="showPrep()"></ion-icon>
+    <ion-icon *ngIf="prep==false" name="arrow-dropdown" (click)="showPrep()"></ion-icon>
+  </ion-item>
+
+  <div *ngIf="prep==true" [@enterAnimation]>
+    <ion-card>
+      <ion-slides pager="true">
+        <ion-slide>
+          <img [src]="recipe.files[0]"/>
+        </ion-slide>
+        <ion-slide>
+          <img [src]="recipe.files[1]"/>
+        </ion-slide>
+        <ion-slide>
+          <img [src]="recipe.files[2]"/>
+        </ion-slide>
+      </ion-slides>
+      
+      <ion-card-content>
+        {{recipe.passaggi[0]}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
