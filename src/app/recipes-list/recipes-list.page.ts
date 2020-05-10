@@ -25,24 +25,16 @@ export class RecipesListPage implements OnInit {
 
   recipeClick(r){
     let p = new Promise((resolve,reject)=>{
-    let files = new Array(Math.floor(r.files.length/3)).fill({'img':[0,0,0],'des':undefined});
-    resolve(files)
+        let file = new Array(r.files.length).fill(0)
+        r.files.forEach(f => {
+          let index = parseInt(f.split('%2F')[1].split('.')[0])-1
+          file[index]=f
+        });
+        resolve(file)  
     })
-    .then((files)=>{
-      r.files.forEach(f => {
-        let index = parseInt(f.split('%2F')[1].split('.')[0])-1
-        let index1 = Math.floor(index/3)
-        let index2 = index-index1*3
-        console.log(index,index1,index2)
-        files[index1]['img'][index2]=f
-        files[index1]['des']=r.passaggi[index1]
-      });
-      return files
-    })
-    .then((files)=>{ 
-      console.log(files)
-      r.presentazione=files
-      //this.navCtrl.navigateForward('/recipe-detail',{ queryParams: { recipe :  JSON.stringify(r) } })
+    .then(file=>{
+      r.files=file
+      this.navCtrl.navigateForward('/recipe-detail',{ queryParams: { recipe :  JSON.stringify(r) } })
     })
     
   }

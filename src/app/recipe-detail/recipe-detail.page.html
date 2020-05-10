@@ -67,21 +67,21 @@
   </ion-item>
 
   <div *ngIf="prep==true" [@enterAnimation]>
-    <ion-card>
+    <ion-card *ngFor="let item of recipe.passaggi; let i = index">
       <ion-slides pager="true">
         <ion-slide>
-          <img [src]="recipe.files[0]"/>
+          <img [src]="recipe.files[i*3]"/>
         </ion-slide>
         <ion-slide>
-          <img [src]="recipe.files[1]"/>
+          <img [src]="recipe.files[i*3+1]"/>
         </ion-slide>
         <ion-slide>
-          <img [src]="recipe.files[2]"/>
+          <img [src]="recipe.files[i*3+2]"/>
         </ion-slide>
       </ion-slides>
       
       <ion-card-content>
-        {{recipe.passaggi[0]}}
+        {{recipe.passaggi[i]}}
       </ion-card-content>
     </ion-card>
   </div>
