@@ -16,10 +16,15 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-list>
-    <ion-item *ngFor="let i of filtered">
+  <ion-list *ngIf="loading==true">
+    <ion-item *ngFor="let i of filtered">   
       <ion-checkbox color="warning" (ionChange)="addIngredient($event,i.name)" [checked]="elementInList(i.name)"></ion-checkbox>
       <ion-label>{{i.name}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <div>
+    <img src="../../assets/icon/loading.gif"/>
+  </div>
+
 </ion-content>

@@ -34,6 +34,9 @@ export class Tab1Page {
 
   ingredientList : any
   selectedIngredients : any
+  loadingIngredient:boolean
+
+  modal:any
 
   constructor(public navCtrl: NavController,private db : DatabaseService, public modalCtrl: ModalController) {  
     this.difficulty=false  
@@ -49,6 +52,7 @@ export class Tab1Page {
 
     this.ingredientList = []
     this.selectedIngredients = []
+    this.loadingIngredient=false
 
   }
 
@@ -71,18 +75,26 @@ export class Tab1Page {
   checkIngredients(e){
     this.ingredients = e.detail.checked
     if(this.ingredients==true && this.ingredientList.length==0){
+      this.loadingIngredient=false
       this.db.getIngredients((i)=>{
+        this.loadingIngredient=true
         this.ingredientList=i
+        this.presentModal()
       })
-    }
+    }else
+      this.presentModal()
   }
 
   async presentModal() {
-    const modal = await this.modalCtrl.create({component:IngredientsModalPage,componentProps:{'ingredients':this.ingredientList,'selected':this.selectedIngredients}});
-    modal.onDidDismiss().then((d)=>{
+    this.modal = await this.modalCtrl.create({component:IngredientsModalPage,componentProps:{'ingredients':this.ingredientList,'selected':this.selectedIngredients}});
+    this.modal.onDidDismiss().then((d)=>{
+      this.presentModal()
       this.selectedIngredients=d.data.data      
     });
-    return await modal.present();
+  }
+
+  async present(){
+    return await this.modal.present()
   }
 
   removeIngredient(i){

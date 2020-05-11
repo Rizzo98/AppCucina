@@ -95,10 +95,13 @@
         <ion-label>{{i}}</ion-label>
         <ion-button color="warning" (click)="removeIngredient(i)"><ion-icon name='close'></ion-icon></ion-button>
       </ion-item>
-      <ion-item>
-        <ion-button color="warning" (click)="presentModal()" ><ion-icon name='add'></ion-icon></ion-button>
+      <ion-item *ngIf="loadingIngredient==true">
+        <ion-button color="warning" (click)="present()" ><ion-icon name='add'></ion-icon></ion-button>
         <ion-label>Aggiungi un nuovo ingrediente</ion-label>
       </ion-item>
+      <div *ngIf="loadingIngredient==false">
+        <img src="../../assets/icon/loading.gif">
+      </div>
     </ion-list>
   </div>
 

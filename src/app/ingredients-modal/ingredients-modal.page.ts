@@ -13,6 +13,8 @@ export class IngredientsModalPage implements OnInit {
   selected:Array<string>
   addedNow:Array<string>
 
+  loading:boolean
+
   constructor(public modalCtrl: ModalController,public navParams: NavParams) {
     this.addedNow = []
     this.ingredients = this.navParams.get('ingredients')
@@ -21,6 +23,11 @@ export class IngredientsModalPage implements OnInit {
   }
 
   ngOnInit() {
+    this.loading=false
+  }
+
+  ionViewDidEnter(){
+    this.loading=true
   }
 
   goBack(){
