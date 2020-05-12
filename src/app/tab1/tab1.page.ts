@@ -12,6 +12,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         transition(':enter', [
           style({transform: 'translateX(-70%)', opacity: 0}),
           animate('250ms', style({transform: 'translateX(0)', opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({transform: 'translateX(0%)', opacity: 1}),
+          animate('250ms', style({transform: 'translateX(-70%)', opacity: 0}))
         ])
       ]
     )
@@ -26,6 +30,7 @@ export class Tab1Page {
   cost:boolean
   maxTime:boolean
   ingredients:boolean
+  noResearch:boolean
   
   difficultyCheck:Array<boolean>
   costCheck:Array<boolean>
@@ -53,7 +58,7 @@ export class Tab1Page {
     this.ingredientList = []
     this.selectedIngredients = []
     this.loadingIngredient=false
-
+    this.noResearch=false
   }
 
   checkDifficulty(e){
@@ -172,7 +177,10 @@ export class Tab1Page {
     }
 
     if(diff==undefined && cal==undefined && costo==undefined && time ==undefined && ing==undefined){
-      console.log("too much zio")
+      this.noResearch = !this.noResearch  
+      setTimeout(()=>{
+        this.noResearch = !this.noResearch
+      },1000)
     }else{
       this.db.getRecipes((c)=>{
         this.navCtrl.navigateForward('/recipes-list',{ queryParams: { recipes :  JSON.stringify(c) } })

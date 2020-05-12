@@ -8,10 +8,10 @@
 
 <ion-content>
   <br>
-  <ion-item>
+  <ion-item (click)="showGeneral()">
     <ion-label class='title'>Generale</ion-label>
-    <ion-icon *ngIf="general==true" name="arrow-dropup" (click)="showGeneral()"></ion-icon>
-    <ion-icon *ngIf="general==false" name="arrow-dropdown" (click)="showGeneral()"></ion-icon>
+    <ion-icon *ngIf="general==true" name="arrow-dropup"></ion-icon>
+    <ion-icon *ngIf="general==false" name="arrow-dropdown"></ion-icon>
   </ion-item>
   <div *ngIf="general==true" class='indentDiv' [@enterAnimation]>
     <ion-item>
@@ -38,15 +38,19 @@
       <label>Tempo totale : </label>
       <p> {{recipe.totalTime}}</p>
     </ion-item>
+    <ion-item>
+      <label>Dosi : </label>
+      <p> {{recipe.dosi}} persone</p>
+    </ion-item>
   </div>
 
   <br>
   <br>
 
-  <ion-item>
+  <ion-item (click)="showIngredients()">
     <ion-label class='title'>Ingredienti</ion-label>
-    <ion-icon *ngIf="ingr==true" name="arrow-dropup" (click)="showIngredients()"></ion-icon>
-    <ion-icon *ngIf="ingr==false" name="arrow-dropdown" (click)="showIngredients()"></ion-icon>
+    <ion-icon *ngIf="ingr==true" name="arrow-dropup"></ion-icon>
+    <ion-icon *ngIf="ingr==false" name="arrow-dropdown"></ion-icon>
   </ion-item>
 
   <div *ngIf="ingr==true" class='indentDiv' [@enterAnimation]>
@@ -60,23 +64,23 @@
   <br>
   <br>
 
-  <ion-item>
+  <ion-item (click)="showPrep()">
     <ion-label class='title'>Preparazione</ion-label>
-    <ion-icon *ngIf="prep==true" name="arrow-dropup" (click)="showPrep()"></ion-icon>
-    <ion-icon *ngIf="prep==false" name="arrow-dropdown" (click)="showPrep()"></ion-icon>
+    <ion-icon *ngIf="prep==true" name="arrow-dropup"></ion-icon>
+    <ion-icon *ngIf="prep==false" name="arrow-dropdown"></ion-icon>
   </ion-item>
 
   <div *ngIf="prep==true" [@enterAnimation]>
     <ion-card *ngFor="let item of recipe.passaggi; let i = index">
       <ion-slides pager="true">
         <ion-slide>
-          <img [src]="recipe.files[i*3]"/>
+          <img ng-class="lazyload" [src]="recipe.files[i*3]"/>
         </ion-slide>
         <ion-slide>
-          <img [src]="recipe.files[i*3+1]"/>
+          <img ng-class="lazyload" [src]="recipe.files[i*3+1]"/>
         </ion-slide>
         <ion-slide>
-          <img [src]="recipe.files[i*3+2]"/>
+          <img ng-class="lazyload" [src]="recipe.files[i*3+2]"/>
         </ion-slide>
       </ion-slides>
       

@@ -40,8 +40,8 @@
   </ion-item>
   <div [@enterAnimation] *ngIf='maxCalories==true' class='indentDiv'>
     <ion-range min="20" max="80" step="2" pin = true color="warning" (ionChange)="setMaxCalories($event)" [value]="maxCaloriesCheck">
-      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
-      <ion-icon slot="end" name="sunny"></ion-icon>
+      <ion-icon size="small" slot="start" name="flash"></ion-icon>
+      <ion-label slot="end">{{maxCaloriesCheck}}</ion-label>
     </ion-range>
   </div>
   
@@ -79,8 +79,8 @@
   </ion-item>
   <div [@enterAnimation] *ngIf='maxTime==true' class='indentDiv'>
     <ion-range min="20" max="80" step="2" pin = true color="warning" (ionChange)="setMaxTime($event)" [value]="maxTimeCheck">
-      <ion-icon size="small" slot="start" name="sunny"></ion-icon>
-      <ion-icon slot="end" name="sunny"></ion-icon>
+      <ion-icon size="small" slot="start" name="alarm"></ion-icon>
+      <ion-label slot="end">{{maxTimeCheck}}</ion-label>
     </ion-range>
   </div>
   
@@ -105,10 +105,17 @@
     </ion-list>
   </div>
 
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-badge [@enterAnimation] *ngIf="noResearch==true" class="error" color="warning">
+      <ion-label style="font-size: 15px;">Inserisci ricerca!</ion-label>
+    </ion-badge>
+  </ion-fab>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="warning" (click)="search()">
       <ion-icon name="search"></ion-icon>
-    </ion-fab-button>
+    </ion-fab-button>   
   </ion-fab>
+
 
 </ion-content>
