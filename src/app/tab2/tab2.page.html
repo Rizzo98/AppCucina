@@ -6,4 +6,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-searchbar *ngIf="loading==false" showcancelbutton="" (ionChange)="filterList($event)"></ion-searchbar>
+  <br>
+  <ion-list *ngIf="loading==false">
+    <ion-item *ngFor="let r of filtered" detail (click)="recipeClick(r)">
+      <!-- <ion-icon name="heart" color="warning"></ion-icon> -->
+      <ion-label>{{r.titolo}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <img *ngIf="loading==true" src="../../assets/icon/loading.gif">
+
+</ion-content>
