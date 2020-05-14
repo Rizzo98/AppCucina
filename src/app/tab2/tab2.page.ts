@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,ModalController } from '@ionic/angular';
 import {DatabaseService} from '../database.service'
 import { ActivatedRoute } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tab2',
@@ -13,13 +14,17 @@ export class Tab2Page {
   recipes:any[]
   loading:boolean
   filtered:any[]
-  
-  constructor(public navCtrl: NavController, private route: ActivatedRoute, private db : DatabaseService) {
+  favourites:any[]
+
+  constructor(public navCtrl: NavController, private route: ActivatedRoute, private db : DatabaseService, private storage: Storage) {
     this.recipes=[]
     this.loading=false
+    this.favourites=[]
+    this.storage.keys().then((k)=>this.favourites=k)
   }
 
   ngOnInit() {
+    console.log(this.favourites)
     if(this.recipes.length==0){
       this.loading=true
       this.db.getRecipes((c)=>{
@@ -64,5 +69,24 @@ export class Tab2Page {
     });
   }
 
+  addFavourite(e){
+    console.log('added ' + e.titolo)
+    this.storage.set(e.titolo,e)
+    this.favourites.push(e.titolo)
+  }
+
+  removeFavourite(e){
+    this.storage.remove(e.titolo)
+    //this.favourites = this.favourites.filter((v)=>{return v!=e})
+    this.favourites.splice(this.favourites.indexOf(e.titolo),1)
+    console.log(this.favourites)
+  }
+
+  isInFavourite(title){
+    if(this.favourites.indexOf(title)!=-1)
+      return true
+    else
+      return false
+  }
 
 }

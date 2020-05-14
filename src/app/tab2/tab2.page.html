@@ -10,9 +10,11 @@
   <ion-searchbar *ngIf="loading==false" showcancelbutton="" (ionChange)="filterList($event)"></ion-searchbar>
   <br>
   <ion-list *ngIf="loading==false">
-    <ion-item *ngFor="let r of filtered" detail (click)="recipeClick(r)">
-      <!-- <ion-icon name="heart" color="warning"></ion-icon> -->
-      <ion-label>{{r.titolo}}</ion-label>
+    <ion-item *ngFor="let r of filtered" detail>
+      <ion-icon *ngIf="!isInFavourite(r.titolo)" name="heart" class="heartNoFav" (click)="addFavourite(r)"></ion-icon>
+      <ion-icon *ngIf="isInFavourite(r.titolo)" name="heart" class="heartFav" (click)="removeFavourite(r)"></ion-icon>
+
+      <ion-label (click)="recipeClick(r)" >{{r.titolo}}</ion-label>
     </ion-item>
   </ion-list>
 

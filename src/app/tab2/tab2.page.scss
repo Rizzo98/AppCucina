@@ -2,11 +2,19 @@ ion-toolbar{
     --background:#ffca22;
     --min-height:70px;
     --border-color: white;
-  }
+}
   
-  ion-title{
-    color: white;
-    font-size: 30px;
-    font-family: Helvetica;
-    align-content: center;
-  }
+ion-title{
+  color: white;
+  font-size: 30px;
+  font-family: Helvetica;
+  align-content: center;
+}
+
+.heartNoFav{
+  color:#fcf0ca;
+}
+
+.heartFav{
+  color:#ffca22;
+}

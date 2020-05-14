@@ -21,6 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {IngredientsModalPageModule} from './ingredients-modal/ingredients-modal.module'
 
+import { IonicStorageModule } from '@ionic/storage';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -32,7 +35,8 @@ import {IngredientsModalPageModule} from './ingredients-modal/ingredients-modal.
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
-    IngredientsModalPageModule],
+    IngredientsModalPageModule,
+    IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
