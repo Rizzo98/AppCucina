@@ -20,11 +20,9 @@ export class Tab2Page {
     this.recipes=[]
     this.loading=false
     this.favourites=[]
-    this.storage.keys().then((k)=>this.favourites=k)
   }
 
   ngOnInit() {
-    console.log(this.favourites)
     if(this.recipes.length==0){
       this.loading=true
       this.db.getRecipes((c)=>{
@@ -34,6 +32,10 @@ export class Tab2Page {
         console.log(this.recipes)
       },undefined,10000,undefined,undefined,undefined)
     }
+  }
+
+  ionViewDidEnter(){
+    this.storage.keys().then((k)=>this.favourites=k)
   }
 
   recipeClick(r){
@@ -73,11 +75,11 @@ export class Tab2Page {
     console.log('added ' + e.titolo)
     this.storage.set(e.titolo,e)
     this.favourites.push(e.titolo)
+    console.log(this.favourites)
   }
 
   removeFavourite(e){
     this.storage.remove(e.titolo)
-    //this.favourites = this.favourites.filter((v)=>{return v!=e})
     this.favourites.splice(this.favourites.indexOf(e.titolo),1)
     console.log(this.favourites)
   }
@@ -88,5 +90,6 @@ export class Tab2Page {
     else
       return false
   }
+
 
 }

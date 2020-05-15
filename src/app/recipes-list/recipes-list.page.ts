@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-recipes-list',
@@ -9,8 +10,12 @@ import { NavController } from '@ionic/angular';
 })
 export class RecipesListPage implements OnInit {
   recipes:any
+  favourites:any[]
 
-  constructor(public navCtrl: NavController,private route: ActivatedRoute) { }
+  constructor(public navCtrl: NavController,private route: ActivatedRoute, private storage: Storage) {
+    this.favourites=[]
+    this.storage.keys().then((k)=>this.favourites=k)
+   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -37,6 +42,25 @@ export class RecipesListPage implements OnInit {
       this.navCtrl.navigateForward('/recipe-detail',{ queryParams: { recipe :  JSON.stringify(r) } })
     })
     
+  }
+
+  addFavourite(e){
+    console.log('added ' + e.titolo)
+    this.storage.set(e.titolo,e)
+    this.favourites.push(e.titolo)
+  }
+
+  removeFavourite(e){
+    this.storage.remove(e.titolo)
+    this.favourites.splice(this.favourites.indexOf(e.titolo),1)
+    console.log(this.favourites)
+  }
+
+  isInFavourite(title){
+    if(this.favourites.indexOf(title)!=-1)
+      return true
+    else
+      return false
   }
 
 }

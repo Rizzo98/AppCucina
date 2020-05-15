@@ -1,1 +1,25 @@
+ion-toolbar{
+    --background:#ffca22;
+    --min-height:70px;
+    --border-color: white;
+  }
+  
+  ion-title{
+    color: white;
+    font-size: 30px;
+    font-family: Helvetica;
+    align-content: center;
+  }
+  
+  ion-toggle {
+    --handle-spacing: 0px;
+    --handle-height: 0%;
+  }
 
+  .heartNoFav{
+    color:#fcf0ca;
+  }
+  
+  .heartFav{
+    color:#ffca22;
+  }
