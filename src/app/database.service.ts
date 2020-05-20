@@ -114,7 +114,10 @@ export class DatabaseService {
   getRecipesByIngredients(ingredients,callback){
     if(ingredients!=undefined){
       this.recipes = this.db.collection<any>('Ricette2',ref=> ref.where('listaIngredienti','array-contains-any',ingredients)).valueChanges()
-      this.recipes.subscribe(res=>callback(res),err =>console.log(err))
+      
+      this.recipes.subscribe(res=>{
+        callback(res.filter(r=> ingredients.every(i=>r.listaIngredienti.includes(i))))
+      })
     }else{
       callback(null)
     }
