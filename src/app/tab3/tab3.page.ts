@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ActivatedRoute } from "@angular/router";
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -12,7 +12,7 @@ export class Tab3Page {
   favourites:any[]
   loading:boolean
 
-  constructor(public navCtrl: NavController,private route: ActivatedRoute, private storage: Storage) {
+  constructor(public navCtrl: NavController,private route: ActivatedRoute, private storage: Storage, public alertController: AlertController) {
     this.loading=true
     this.favourites=[]
     
@@ -83,6 +83,32 @@ export class Tab3Page {
   clearAll(){
     this.storage.clear()
     this.favourites = []
+  }
+
+
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      message: 'Confermi di eliminare tutti i preferiti?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'alertButton',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          cssClass: 'alertButton',
+          handler: () => {
+            this.clearAll()
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

@@ -32,7 +32,7 @@ export class RecipeDetailPage implements OnInit {
   prep:boolean
 
   constructor(public navCtrl: NavController,private route: ActivatedRoute) {
-    this.general=false
+    this.general=true
     this.ingr=false
     this.prep=false
    }

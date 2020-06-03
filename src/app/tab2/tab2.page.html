@@ -11,8 +11,8 @@
   <br>
   <ion-list *ngIf="loading==false">
     <ion-item *ngFor="let r of filtered" detail>
-      <ion-icon *ngIf="!isInFavourite(r.titolo)" name="heart" class="heartNoFav" (click)="addFavourite(r)"></ion-icon>
-      <ion-icon *ngIf="isInFavourite(r.titolo)" name="heart" class="heartFav" (click)="removeFavourite(r)"></ion-icon>
+      <ion-icon *ngIf="!isInFavourite(r.titolo)" name="heart-empty" class="heartNoFav" (click)="addFavourite(r)"></ion-icon>
+      <ion-icon *ngIf="isInFavourite(r.titolo)" name="heart-empty" class="heartFav" (click)="removeFavourite(r)"></ion-icon>
 
       <ion-label (click)="recipeClick(r)" >{{r.titolo}}</ion-label>
     </ion-item>
