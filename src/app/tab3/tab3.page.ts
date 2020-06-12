@@ -35,7 +35,7 @@ export class Tab3Page {
         this.favourites.push(r)
         if (i==len)
           this.loading=false
-      })  
+      })
     })
   }
   

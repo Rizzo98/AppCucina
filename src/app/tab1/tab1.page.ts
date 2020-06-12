@@ -52,8 +52,8 @@ export class Tab1Page {
 
     this.difficultyCheck = [false,false,false,false]
     this.costCheck = [false,false,false,false]
-    this.maxCaloriesCheck=0
-    this.maxTimeCheck=0
+    this.maxCaloriesCheck=100
+    this.maxTimeCheck=10
 
     this.ingredientList = []
     this.selectedIngredients = []

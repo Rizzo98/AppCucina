@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
 export class RecipesListPage implements OnInit {
   recipes:any
   favourites:any[]
+  noFound : boolean
 
   constructor(public navCtrl: NavController,private route: ActivatedRoute, private storage: Storage) {
     this.favourites=[]
@@ -22,6 +23,9 @@ export class RecipesListPage implements OnInit {
       this.recipes =  JSON.parse(params["recipes"]);
     });
     console.log(this.recipes)
+    if(this.recipes.length==0){
+      this.noFound=true
+    }
   }
 
   goBack(){

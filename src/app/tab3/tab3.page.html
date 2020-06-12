@@ -21,6 +21,10 @@
     </ion-item>
   </ion-list>
 
+  <ion-text *ngIf="loading==false && favourites.length==0" class="noFound">
+    <h4>Nessuna preferito salvato!</h4>
+  </ion-text>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="warning" (click)="presentAlertConfirm()">
       <ion-icon name="trash"></ion-icon>

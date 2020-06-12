@@ -15,6 +15,10 @@
     </ion-item>
   </ion-list>
 
+  <ion-text *ngIf="noFound==true" class="noFound">
+    <h4>Nessuna ricetta trovata!</h4>
+  </ion-text>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="warning" (click)="goBack()">
       <ion-icon name="arrow-back"></ion-icon>

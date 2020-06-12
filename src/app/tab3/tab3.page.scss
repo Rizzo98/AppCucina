@@ -2,26 +2,30 @@ ion-toolbar{
     --background:#ffca22;
     --min-height:70px;
     --border-color: white;
-  }
+}
   
-  ion-title{
-    color: white;
-    font-size: 30px;
-    font-family: Helvetica;
-    align-content: center;
-  }
-  
-  ion-toggle {
-    --handle-spacing: 0px;
-    --handle-height: 0%;
-  }
+ion-title{
+  color: white;
+  font-size: 30px;
+  font-family: Helvetica;
+  align-content: center;
+}
 
-  .heartNoFav{
-    color:#000000;
-    margin-right: 5px;
-  }
-  
-  .heartFav{
-    color:#ffca22;
-    margin-right: 5px;
-  }
+ion-toggle {
+  --handle-spacing: 0px;
+  --handle-height: 0%;
+}
+
+.heartNoFav{
+  color:#000000;
+  margin-right: 5px;
+}
+
+.heartFav{
+  color:#ffca22;
+  margin-right: 5px;
+}
+
+.noFound{
+  text-align: center;
+}
